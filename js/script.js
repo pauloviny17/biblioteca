@@ -40,11 +40,11 @@ let visivel = false
 
 olho.addEventListener('click', ()=>{
     if(visivel == false){
-        olho.src = "imgs/visibility.png"
+        olho.src = "/biblioteca/imgs/visibility.png"
         senha.type = "text"
         visivel = true
     } else {
-        olho.src = "imgs/visibility_lock.png"
+        olho.src = "/biblioteca/imgs/visibility_lock.png"
         senha.type = "password"
         visivel = false
     }

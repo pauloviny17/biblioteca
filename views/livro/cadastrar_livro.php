@@ -32,6 +32,11 @@ require_once  __DIR__ . "/../../templates/_cabecalho.php"
                 </select>
             </div>
 
+            <div class="form-item">
+                <label for="capa">Capa do livro</label>
+                <input type="file" id="capa" name="capa" accept="image/*">
+            </div>
+
             <button type="submit">Cadastrar</button>
 
         </form>

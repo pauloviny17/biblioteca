@@ -10,7 +10,7 @@ require_once  __DIR__ . "/../../templates/_cabecalho.php"
             <div class="form-item">
                 <label for="senha">Senha</label>
                 <input type="password" name="senha" id="senha" required>
-                <img src="imgs/visibility_lock.png" alt="Mostrar senha" id="iconeOlho">
+                <img src="/biblioteca/imgs/visibility_lock.png" alt="Mostrar senha" id="iconeOlho">
             </div>
             <div class="botoes">
                 <button type="button">Esqueci minha senha</button>

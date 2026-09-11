@@ -14,8 +14,8 @@
         <img src="https://picsum.photos/100" alt="Logo" class="logo">
         <nav>
             <a href="/biblioteca/index.php">Início</a>
-            <a href="/bilbioteca/views/usuario/cadastro.php">Cadastre-se</a>
-            <a href="/bilbioteca/views/usuario/login.php">Entrar</a>
-            <a href="/bilbioteca/views/usuario/perfil.php">Perfil</a>
+            <a href="/biblioteca/views/usuario/cadastro.php">Cadastre-se</a>
+            <a href="/biblioteca/views/usuario/login.php">Entrar</a>
+            <a href="/biblioteca/views/usuario/perfil.php">Perfil</a>
         </nav>
     </header>
