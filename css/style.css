@@ -112,8 +112,8 @@ h1 {
 }
 
 .card-img img {
-    width: 100%;
-    object-fit: cover;
+    width: 100%; 
+    object-fit: fill;
     border-radius: 8px 8px 0 0;
 }
 
