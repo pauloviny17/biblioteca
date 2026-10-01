@@ -78,8 +78,8 @@ h1 {
     width: 200px;
     height: 250px;
     cursor: pointer;
-    transition: 1s;
-    font-size: xx-small;
+    transition: 0.5s;
+    font-size: x-small;
 }
 
 .card:hover {

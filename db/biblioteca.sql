@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS usuario (
 -- seeds
 INSERT INTO categoria (nome) VALUES ("Romance"), ("Terror"), ("Fantasia");
 
-INSERT INTO livro (titulo, ano_pub, autor, resumo, id_categoria) VALUES ("Orgulho e Preconceito", "1813", "Jane Austen", "Lorem Ipsum", 1), ("It: A Coisa", "1986", "Stephen King", "Lorem Ipsum", 2), ("Harry Potter e a Pedra Filosofal", "1997", "J.K. Rowling", "Lorem Ipsum", 3);
+INSERT INTO livro (titulo, ano_pub, autor, resumo, id_categoria) 
+VALUES ("Orgulho e Preconceito", "1813", "Jane Austen", "Lorem Ipsum", 1), ("It: A Coisa", "1986", "Stephen King", "Lorem Ipsum", 2), ("Harry Potter e a Pedra Filosofal", "1997", "J.K. Rowling", "Lorem Ipsum", 3);
 
 
