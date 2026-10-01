@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . "/../../templates/_cabecalho.php";
+require_once __DIR__ . "/../../models/categoria.php";
+
+$categorias = Categoria::listar();
 ?>
 
     <main class="main-detalhe">
@@ -26,11 +29,16 @@ require_once __DIR__ . "/../../templates/_cabecalho.php";
             </div>
 
             <div class="form-item">
-                <label for="categoria">Categoria</label>
+                <label for="autor">Categoria</label>
                 <select name="categoria" id="categoria">
-                    <option value="cat1">Categoria1</option>
-                    <option value="cat2">Categoria2</option>
+                    <?php foreach($categorias as $categoria): ?>
+                    <option value="<?=  $categoria['id_categoria'] ?>"><?= $categoria['nome'] ?></option>
+                    <?php endforeach; ?>
                 </select>
+            </div>
+            <div class="form-item">
+                <label for="foto">Foto de perfil</label>
+                <input type="file" name="foto" id="foto" required>
             </div>
 
             

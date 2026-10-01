@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . "/../configs/conexao.php";
 
-class Livro {
+class Livro
+{
     private $id_livro;
     private $titulo;
     private $ano_pub;
@@ -11,10 +12,11 @@ class Livro {
     private $categoria;
 
 
-    public static function listar() {
+    public static function listar()
+    {
         try {
             $conexao = Conexao::conectar();
-            $sql = "SELECT * FROM livro";
+            $sql = "SELECT livro.*, categoria.nome FROM livro JOIN categoria ON livro.id_categoria = categoria.id_categoria";
             $stmt = $conexao->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -23,7 +25,8 @@ class Livro {
         }
     }
 
-    public static function buscarPorId($id){
+    public static function buscarPorId($id)
+    {
         try {
             $conexao = Conexao::conectar();
             $sql = "SELECT livro.*, categoria.nome FROM livro JOIN categoria ON livro.id_categoria = categoria.id_categoria WHERE id_livro = :id";
@@ -34,5 +37,123 @@ class Livro {
         } catch (PDOException $e) {
             echo 'Erro ao buscar o livro: ' . $e->getMessage();
         }
+    }
+    public function inserir($titulo, $ano_pub, $autor, $resumo, $capa, $id_categoria)
+    {
+        try {
+            $conexao = Conexao::conectar();
+            $sql = "INSERT INTO livro(titulo, ano_pub, autor, resumo, capa, id_categoria) VALUES (:titulo, :ano_pub, :autor, :resumo, :capa, :id_categoria)";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(':titulo', $titulo);
+            $stmt->bindValue(':ano_pub', $ano_pub);
+            $stmt->bindValue(':autor', $autor);
+            $stmt->bindValue(':resumo', $resumo);
+            $stmt->bindValue(':capa', $capa);
+            $stmt->bindValue(':id_categoria', $id_categoria);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    public static function deletar($id)
+    {
+        try {
+            $conexao = Conexao::conectar();
+            $sql = "DELETE FROM livro WHERE id_livro = :id";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar o livro: ' . $e->getMessage();
+        }
+    }
+    public function carregar($id)
+    {
+        try {
+            $conexao = Conexao::conectar();
+            $sql = "SELECT * FROM livro WHERE id_livro = :id";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+            $resultado = $stmt->fetch();
+
+            if ($resultado) {
+                $this->id_livro = $resultado['id_livro'];
+                $this->titulo = $resultado['titulo'];
+                $this->ano_pub = $resultado['ano_pub'];
+                $this->autor = $resultado['autor'];
+                $this->resumo = $resultado['resumo'];
+                $this->capa = $resultado['capa'];
+                $this->categoria = $resultado['id_categoria'];
+            }
+        } catch (PDOException $e) {
+            echo 'Erro ao buscar o livro: ' . $e->getMessage();
+        }
+    }
+    public function atualizar($titulo, $ano_pub, $autor, $resumo, $capa, $id_categoria, $id_livro)
+    {
+        try {
+            $conexao = Conexao::conectar();
+            $sql = "UPDATE livro SET titulo = :titulo, ano_pub = :ano_pub, autor = :autor, resumo = :resumo, capa = :capa, id_categoria = :id_categoria WHERE id_livro= :id";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(':titulo', $titulo);
+            $stmt->bindValue(':ano_pub', $ano_pub);
+            $stmt->bindValue(':autor', $autor);
+            $stmt->bindValue(':resumo', $resumo);
+            $stmt->bindValue(':capa', $capa);
+            $stmt->bindValue(':id_categoria', $id_categoria);
+            $stmt->bindValue(':id_livro', $id_livro);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function atualizarSemCapa($titulo, $ano_pub, $autor, $resumo, $id_categoria, $id_livro)
+    {
+        try {
+            $conexao = Conexao::conectar();
+            $sql = "UPDATE livro SET titulo = :titulo, ano_pub = :ano_pub, autor = :autor, resumo = :resumo, id_categoria = :id_categoria WHERE id_livro= :id";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindValue(':titulo', $titulo);
+            $stmt->bindValue(':ano_pub', $ano_pub);
+            $stmt->bindValue(':autor', $autor);
+            $stmt->bindValue(':resumo', $resumo);
+            $stmt->bindValue(':id_categoria', $id_categoria);
+            $stmt->bindValue(':id_livro', $id_livro);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    public function getId()
+    {
+        return $this->id_livro;
+    }
+    public function getResumo()
+    {
+        return $this->resumo;
+    }
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+    public function getAnoPub()
+    {
+        return $this->ano_pub;
+    }
+    public function getAutor()
+    {
+        return $this->autor;
+    }
+    public function getCapa()
+    {
+        return $this->capa;
+    }
+    public function getCategoria()
+    {
+        return $this->categoria;
     }
 }
