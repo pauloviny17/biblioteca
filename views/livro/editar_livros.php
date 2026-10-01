@@ -14,27 +14,27 @@ $livro->carregar($id);
         <form action="/biblioteca/controllers/livro_edt_controller.php" method="post" enctype="multipart/form-data">
         
             <div class="form-item">
-                <label for="titulo">Titulo</label>
+                <label for="titulo"><b>Título</b></label>
                 <input type="text" name="titulo" id="titulo" value="<?=  $livro->getTitulo() ?>" required>
             </div>
 
             <div class="form-item">
-                <label for="ano">Ano da Publicacao</label>
-                <input type="text" name="ano" id="ano" value="<?=  $livro->getAnoPub() ?>" required>>
+                <label for="ano"><b>Ano da publicação</b></label>
+                <input type="text" name="ano" id="ano" value="<?=  $livro->getAnoPub() ?>" required>
             </div>
 
             <div class="form-item">
-                <label for="autor">Autor</label>
-                <input type="text" name="autor" id="autor" value="<?=  $livro->getAutor() ?>" required>>
+                <label for="autor"><b>Autor</b></label>
+                <input type="text" name="autor" id="autor" value="<?=  $livro->getAutor() ?>" required>
             </div>
 
             <div class="form-item">
-                <label for="resumo">Resumo</label>
+                <label for="resumo"><b>Resumo</b></label>
                 <textarea name="resumo" id="resumo"><?= $livro->getResumo() ?>"></textarea>
             </div>
 
             <div class="form-item">
-                <label for="categoria">Categoria</label>
+                <label for="categoria"><b>Categoria</b></label>
                 <select name="categoria" id="categoria">
                     <?php foreach($resultado as $categoria): ?>
                     <option value="<?= $categoria['id_categoria'] ?>" <?=  $categoria['id_categoria'] == $livro->getCategoria() ? "selected" : "" ?>><?= $categoria['nome'] ?></option>
@@ -42,12 +42,12 @@ $livro->carregar($id);
                 </select>
             </div>
                         <div class="form-item">
-                <label for="capa">Capa</label>
+                <label for="capa"><b>Capa</b></label>
                 <input type="file" name="capa" id="capa">
             </div>
-                <input type="hidden" name="id" id="id" value="<?=  $livro->getId() ?>" required>>
+                <input type="hidden" name="id" id="id" value="<?=  $livro->getId() ?>" required>
 
-            <button type="submit">Atualizar</button>
+            <button type="submit"><b>Atualizar</b></button>
 
         </form>
     </main>

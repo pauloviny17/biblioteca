@@ -107,8 +107,14 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
 }
-
+#img-detalhe {
+    flex: 0 0 auto;
+    width: 300px;
+}
 .img-detalhe img {
     height: 500px;
     width: 300px;
@@ -124,9 +130,9 @@ h1 {
 form {
     background-color: var(--prim);
     color: var(--sec);
-    padding: 1rem;
+    padding: 1rem 2rem;
     border-radius: 10px;
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;

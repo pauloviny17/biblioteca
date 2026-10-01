@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . "/../models/livro.php";
+
 session_start();
+
 $id = $_GET['id_livro'];
 $livro = new Livro();
 $livro->deletar($id);
