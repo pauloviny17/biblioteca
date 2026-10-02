@@ -49,6 +49,8 @@ class Autenticacao
             // armazena a foto do usuário na sessão
             $_SESSION['foto'] = $usuario['foto'];
 
+            $_SESSION['nivel_acesso'] = $usuario['nivel_acesso'];
+
             // redireciona o usuário para a página de perfil
             header('Location: /biblioteca/views/usuario/perfil.php');
 
@@ -110,6 +112,16 @@ class Autenticacao
             header("Location: /biblioteca/views/usuario/login.php");
 
             // encerra a execução do código
+            exit();
+        }
+    }
+    public static function ehAdmin (){
+        return $_SESSION['nivel_acesso'] == 2;
+    }
+    public static function logadoEAdmin(){
+        if(!self::estaAutenticado() || !self::ehAdmin()){
+            $_SESSION['aviso'] = "Acesso negado.";
+            header('location: /biblioteca/views/usuario/login.php');
             exit();
         }
     }
